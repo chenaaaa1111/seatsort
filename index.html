@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>教室选座</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="//g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+<div id="app" v-cloak>
+   <div class="title">{{classInfo.class_name}}</div>
+    <div class="come-info">
+        <div>班级人数</div>
+        <div>{{classInfo.total_student}}人</div>
+        <div>实到人数</div>
+        <div>{{classInfo.actual_student}}人</div>
+        <div>未到人数</div>
+        <div>{{classInfo.total_student-classInfo.actual_student}}人</div>
+    </div>
+    <div class="podium">
+        <div>讲台</div>
+    </div>
+    <div class="desk-con" v-if="classInfo.desk_list">
+        <div
+	        class="desk" :class="{empty:!item.student,even:index%2 == 1,uneven:index%2 == 0}"
+	        v-for="(item,index) in classInfo.desk_list" :key="index" ref="desk"
+	        @drop="drop($event,item)"
+        >
+            <div 
+            	:style="index === moveingItem ?  moveingStyle : {}"
+	            class="student" v-if="item.student"
+	            draggable @dragstart="drag($event,item)"  @dragover='allowDrop($event)'
+	            @touchmove="move" @touchstart="startMove($event,index)" @touchend="endMove">
+	            {{item.student.student_name}}
+	        </div>
+        </div>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+<script src="//cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html> 

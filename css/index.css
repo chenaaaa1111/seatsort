@@ -1,0 +1,69 @@
+[v-cloak] {
+  display: none;
+}
+#app {
+  padding-bottom: 0.8rem;
+}
+#app .title {
+  padding: 0.26666667rem;
+  font-size: 0.53333333rem;
+  text-align: center;
+  color: #1E2624;
+  font-weight: bold;
+}
+#app .come-info {
+  padding-left: 0.26666667rem;
+  padding-right: 0.26666667rem;
+  font-size: 0.37333333rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #24211F;
+}
+#app .podium {
+  width: 5.73333333rem;
+  height: 0.61333333rem;
+  line-height: 0.61333333rem;
+  margin-top: 0.8rem;
+  font-size: 0.32rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #F0F0F0;
+  color: #211E1D;
+  border: 1px solid #7C7C7C;
+  position: relative;
+  overflow: hidden;
+}
+#app .desk-con {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+#app .desk-con .desk {
+  margin-top: 0.4rem;
+  width: 10.6667%;
+  height: 1.06666667rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #211E1D;
+  background-color: #B5E6B3;
+}
+#app .desk-con .desk.empty {
+  background-color: #E0E0E0;
+}
+#app .desk-con .desk.even {
+  margin-left: 0.02666667rem;
+}
+#app .desk-con .desk.uneven {
+  margin-left: 2.6667%;
+}
+#app .desk-con .desk .student {
+  font-size: 0.26666667rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
