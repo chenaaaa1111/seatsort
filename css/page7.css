@@ -10,3 +10,17 @@ html,body{
 .top{
     margin: 0rem 0.24rem;
 }
+#mySelect {
+    background-position: left bottom;
+    background-image: none!important;
+}
+.zdyList .ui-nowrap{
+    font-size: 0.36rem;
+    display: inline-block;
+    float: left;
+}
+.zdyList .ui-txt-info{
+    font-size: 0.36rem;
+    display: inline-block;
+    float: right;
+}
