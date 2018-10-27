@@ -1,5 +1,5 @@
 html,body{
-    width: 100%;height: 100%;
+    width: 100%;height: 100%;background: #fff;
 }
 .icon {
     width: 1em; height: 1em;
@@ -9,4 +9,18 @@ html,body{
 }
 .top{
     margin: 0rem 0.24rem;
+}
+#mySelect {
+    background-position: left bottom;
+    background-image: none!important;
+}
+.zdyList .ui-nowrap{
+    font-size: 0.36rem;
+    display: inline-block;
+    float: left;
+}
+.zdyList .ui-txt-info{
+    font-size: 0.36rem;
+    display: inline-block;
+    float: right;
 }

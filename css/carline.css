@@ -1,6 +1,15 @@
 .lineItem{
     display: flex;
+    align-items: center;
+    position: relative;
 }
 .flex{
     display: flex;
+}
+.user{
+    font-size: 40px;
+}
+.icon-zhankai{
+    position: absolute;
+    right: 20px;
 }

@@ -62,14 +62,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1554" />
-          <entry key="html" value="576" />
+          <entry key="css" value="1646" />
+          <entry key="html" value="599" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1554" />
-          <entry key="HTML" value="576" />
+          <entry key="CSS" value="1646" />
+          <entry key="HTML" value="599" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -101,8 +101,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page7.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+            <state relative-caret-position="422">
+              <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
               <folding>
                 <element signature="n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#select#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -173,9 +173,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/page7.css">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="270">
               <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
 >>>>>>> 8c116e14d5bf072f8a56fa8596cc02dad931f633
+=======
+            <state relative-caret-position="648">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+>>>>>>> d047e6a65f05a4e2fd9bcb7b1b652df66854a1b2
             </state>
           </provider>
         </entry>
@@ -282,6 +287,11 @@
               <item name="schoolView" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="schoolView" type="b2602c69:ProjectViewProjectNode" />
+              <item name="schoolView" type="462c0819:PsiDirectoryNode" />
+              <item name="font" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -345,10 +355,14 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="11732000" />
 =======
     <option name="totallyTimeSpent" value="12122000" />
 >>>>>>> 8c116e14d5bf072f8a56fa8596cc02dad931f633
+=======
+    <option name="totallyTimeSpent" value="12715000" />
+>>>>>>> d047e6a65f05a4e2fd9bcb7b1b652df66854a1b2
   </component>
   <component name="ToolWindowManager">
     <frame x="139" y="138" width="1500" height="874" extended-state="0" />
@@ -430,6 +444,7 @@
 =======
         <state>
           <caret column="106012" selection-start-column="106012" selection-end-column="106012" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#1654#7878#1" expanded="true" />
             <element signature="e#8293#10169#1" expanded="true" />
@@ -439,6 +454,8 @@
             <element signature="e#56813#77952#2" expanded="true" />
           </folding>
 >>>>>>> 8c116e14d5bf072f8a56fa8596cc02dad931f633
+=======
+>>>>>>> d047e6a65f05a4e2fd9bcb7b1b652df66854a1b2
         </state>
       </provider>
     </entry>
@@ -567,13 +584,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/page7.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="648">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/page7.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="21">
           <caret line="14" column="79" lean-forward="false" selection-start-line="14" selection-start-column="79" selection-end-line="14" selection-end-column="79" />
@@ -605,6 +623,10 @@
 =======
         <state relative-caret-position="726">
           <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+=======
+        <state relative-caret-position="422">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+>>>>>>> d047e6a65f05a4e2fd9bcb7b1b652df66854a1b2
           <folding>
             <element signature="n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#select#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />

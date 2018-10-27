@@ -101,4 +101,5 @@ button{
 }
 .lineItem{
   display: flex;
+  align-items: center;
 }
