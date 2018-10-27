@@ -1,0 +1,12 @@
+html,body{
+    width: 100%;height: 100%;
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+.top{
+    margin: 0rem 0.24rem;
+}
