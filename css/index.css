@@ -1,3 +1,8 @@
+html,div,css,ul,li,dt,dl,body{
+  margin: 0;
+  padding: 0;
+}
+
 [v-cloak] {
   display: none;
 }
@@ -38,7 +43,7 @@
 #app .desk-con {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
   position: relative;
 }
 #app .desk-con .desk {
@@ -66,4 +71,31 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.bottom{
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+button{
+  border: none;
+  outline: none;
+  border-radius: 0;
+}
+.complete{
+  width: 60px;
+  background: #26a69a;
+}
+.cance{
+  width: 60px;
+  background: #fff;
+}
+.remain{
+  width: 80%;
+  /* margin-left: 10%; */
+  padding: 0.3rem;
+  background: #B5E6B3;
+  color: #fff;
+  font-size: .36rem;
 }
