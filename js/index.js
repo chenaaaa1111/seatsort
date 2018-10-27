@@ -11,7 +11,7 @@ var vm = new Vue({
 	el : '#app',
 	data : function(){
 		return {
-            isrelow:true,
+            isrelow:false,
 			classInfo:{},
 			moveing:false,
 			moveingItem:{},
