@@ -20,7 +20,8 @@ var vm = new Vue({
 			startTime:0,
             canmove:false,
 			endTime:0,
-			max:0,
+            desk_list_pro:[],
+			vmax:'A',
             isTouchend:false,
 			moveingTarget:null,
 			moveOffset:{},
@@ -33,22 +34,35 @@ var vm = new Vue({
 			this.$http.get('./json/mock2.json',{params:{class_id:class_id}}).then(function(res){
 				var desk_list = [];
 				var keys=Object.keys(res.data.studentMap);
+				_this.desk_list_pro=res.data.studentMap;
+				console.log(keys);
 				keys.forEach(function(val,key){
-					var num=parseInt(val);
-					if(_this.max<num){
-                        _this.max=num;
+					// var num=parseInt(val);
+					var num=val.match(/[A-Z]/g)[0];
+
+					if(_this.vmax<num){
+                        _this.vmax=num;
 					}
 				})
-				for(var i in res.data.studentMap){
-					var col = columns.indexOf(i.match(/[A-Z]/g)[0]);
-					var row = i.match(/[0-9]/g)[0]-1;
-					var max =_this.max;
+				_this.vmaxNum=columns.indexOf(_this.vmax);
+				console.log('max',_this.vmaxNum);
+                for(var i in res.data.studentMap){
+                    var col = columns.indexOf(i.match(/[A-Z]/g)[0]);
+                    console.log(res.data.studentMap[i]);
+                    var row = i.match(/[0-9]/g)[0]-1;
+                    var max =_this.max;
 
-					if(desk_list[row]){
-						desk_list[row][col] = res.data.studentMap[i]
-					}else{
-						desk_list[row] = [];
-						desk_list[row][col] = res.data.studentMap[i]
+                    if(desk_list[row]){
+                        desk_list[row][col] = res.data.studentMap[i]
+                    }else{
+                        desk_list[row] = [];
+                        desk_list[row][col] = res.data.studentMap[i]
+                    }
+                }
+                for(var i in desk_list){
+                	console.log('kk',i,desk_list[i])
+                	if(desk_list[i].length<=_this.vmaxNum){
+                        desk_list[i][_this.vmaxNum]={};
 					}
 				}
 				res.data.desk_list = desk_list;
@@ -59,12 +73,54 @@ var vm = new Vue({
 					}
 				})
 				_this.classInfo = res.data;
-				console.log(_this.classInfo)
+				console.log('classinfo',_this.classInfo)
 			})
+
 		},
+
+        compareDesk:function (res) {
+			console.log('要比较的数组',res, this.desk_list_pro,this.currentArea,":::",this.desk_list);
+            var currentObj={};
+            this.desk_list.forEach(function(row,row_index){
+                console.log('row',row);
+                row.forEach(function(col,col_index){
+                	// console.log('col',col);
+
+                    // console.log('key***',key);
+                    if(col && col.studentId){
+                        console.log('key***',key);
+                        var key=columns[col_index]+(row_index+1);
+                        col.deskNumber=columns[col_index]+(row_index+1);
+                        currentObj[key]=col;
+
+                    }
+                })
+            })
+            this.desk_list_pro=currentObj;
+			console.log('compareIds',currentObj);
+            var commtArray=[];
+			for(var ins in currentObj){
+            	console.log('ins',res[ins],currentObj[ins]);
+				if(res[ins]&&currentObj[ins]){
+                    if(currentObj[ins].studentId!=res[ins].studentId){
+                        commtArray.push(currentObj[ins]);
+                    }
+				}else if(currentObj[ins]){
+                    if(currentObj[ins]!=res[ins]){
+                        commtArray.push(currentObj[ins]);
+                    }
+
+				}
+
+			}
+            return commtArray;
+        },
         complete:function (e) {//提交信息
 			this.canmove=false;
-            console.log(this.currentArea);
+            console.log('this.currentArea',this.currentArea);
+            var comarray=this.compareDesk(this.desk_list_pro);
+            console.log('要提交的信息',comarray);
+
         },
 		cance:function (e) {
 
@@ -122,8 +178,6 @@ var vm = new Vue({
                         top : e.target.getBoundingClientRect().top+'px'
                     }
 			}
-
-
         },
         // 用户滑动
         move:function(e){
@@ -163,11 +217,7 @@ var vm = new Vue({
                     this.moveingTarget = null
 
 			}else{
-
 			}
-
-
-
 		},
 		findIndexById:function(studentId){
 			for(var i=0;i<this.desk_list.length;i++){
@@ -179,11 +229,6 @@ var vm = new Vue({
 			}
 		}
 	},
-    complete:function (e) {
-		console.log(e.target);
-		this.canmove=false;
-
-    },
     cance:function (e) {
         this.canmove=false;
     },
@@ -199,11 +244,23 @@ var vm = new Vue({
 			}
 		},
 		columnWidth:function(){
-			var columnWidth = 85.3333 / this.column + '%';
+			var columnWidth = "1.2rem";
+
 			return {
 				width : columnWidth
 			}
 		},
+		deskOnwidth:function () {
+            var width=0;
+            if(this.vmaxNum<8){
+            	width="100%";
+			}else{
+                width=(11+(this.vmaxNum-7)*1.4)+"rem";
+			}
+            return {
+                width : width
+            }
+        },
 		desk_list:function(){
 			return this.classInfo.desk_list || []
 		},
@@ -221,9 +278,11 @@ var vm = new Vue({
 		//保存的时候提交这个数据就行了
 		currentArea:function(){
 			var currentArea = [];
+			var deskObj={};
 			this.desk_list.forEach(function(row,row_index){
 				row.forEach(function(col,col_index){
 					if(col && col.studentId){
+                        deskObj.deskNumber=col;
 						currentArea.push({
 							studentId:col.studentId,
 							deskNumber:columns[col_index]+(row_index+1)
@@ -233,6 +292,20 @@ var vm = new Vue({
 			})
 			return currentArea
 		},
+        sortdesk:function () {
+			var sortdesk=[];
+			this.desk_list_pro.forEach(function(row,row_index){
+                row.forEach(function(col,col_index){
+                    if(col && col.studentId){
+                        currentArea.push({
+                            studentId:col.studentId,
+                            deskNumber:columns[col_index]+(row_index+1)
+                        })
+                    }
+                })
+            });
+			return sortdesk;
+        },
 		column:function(){
 			var maxColumn = 1;
 			this.desk_list.forEach(function(row){

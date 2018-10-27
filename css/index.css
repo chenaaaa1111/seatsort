@@ -24,6 +24,7 @@ html,div,css,ul,li,dt,dl,body{
   justify-content: space-between;
   align-items: center;
   color: #24211F;
+
 }
 #app .podium {
   width: 5.73333333rem;
@@ -39,6 +40,7 @@ html,div,css,ul,li,dt,dl,body{
   border: 1px solid #7C7C7C;
   position: relative;
   overflow: hidden;
+  margin: .6rem auto .4rem auto;
 }
 #app .desk-con {
   display: flex;
@@ -85,7 +87,7 @@ button{
 }
 .complete{
   width: 60px;
-  background: #26a69a;
+  background: #12B7F5;
 }
 .cance{
   width: 60px;

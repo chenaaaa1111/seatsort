@@ -12,4 +12,19 @@
 .icon-zhankai{
     position: absolute;
     right: 20px;
+    color: #ccc;
+}
+.icon-icon_location{
+    margin-right: .8rem;
+}
+.date{
+    color: #ccc;
+    position: absolute;
+    right: 54px;
+}
+.schoolr{
+    color: #ccc;
+}
+.collection{
+    margin: 0;
 }
