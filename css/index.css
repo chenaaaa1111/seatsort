@@ -86,12 +86,26 @@ button{
   border-radius: 0;
 }
 .complete{
-  width: 60px;
+  width: 4rem;
   background: #12B7F5;
+
+
+}
+.btn{
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 16px;
+  font-size: 14px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .cance{
-  width: 60px;
-  background: #fff;
+  width: 4rem;
+  border: 0;
+  color: #bbb;
+  background: #e9ebec;
+  background-clip: padding-box;
 }
 .remain{
   width: 80%;

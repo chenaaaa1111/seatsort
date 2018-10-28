@@ -35,7 +35,6 @@ var vm = new Vue({
 				var desk_list = [];
 				var keys=Object.keys(res.data.studentMap);
 				_this.desk_list_pro=res.data.studentMap;
-				console.log(keys);
 				keys.forEach(function(val,key){
 					// var num=parseInt(val);
 					var num=val.match(/[A-Z]/g)[0];
@@ -45,10 +44,9 @@ var vm = new Vue({
 					}
 				})
 				_this.vmaxNum=columns.indexOf(_this.vmax);
-				console.log('max',_this.vmaxNum);
                 for(var i in res.data.studentMap){
                     var col = columns.indexOf(i.match(/[A-Z]/g)[0]);
-                    console.log(res.data.studentMap[i]);
+
                     var row = i.match(/[0-9]/g)[0]-1;
                     var max =_this.max;
 
@@ -60,14 +58,12 @@ var vm = new Vue({
                     }
                 }
                 for(var i in desk_list){
-                	console.log('kk',i,desk_list[i])
                 	if(desk_list[i].length<=_this.vmaxNum){
                         desk_list[i][_this.vmaxNum]={};
 					}
 				}
 				res.data.desk_list = desk_list;
 				desk_list.forEach(function (val,key) {
-					console.log(val[max])
 					if(!val[max]){
 						val[max]={};
 					}
@@ -77,30 +73,20 @@ var vm = new Vue({
 			})
 
 		},
-
         compareDesk:function (res) {
-			console.log('要比较的数组',res, this.desk_list_pro,this.currentArea,":::",this.desk_list);
             var currentObj={};
             this.desk_list.forEach(function(row,row_index){
-                console.log('row',row);
                 row.forEach(function(col,col_index){
-                	// console.log('col',col);
-
-                    // console.log('key***',key);
                     if(col && col.studentId){
-                        console.log('key***',key);
                         var key=columns[col_index]+(row_index+1);
                         col.deskNumber=columns[col_index]+(row_index+1);
                         currentObj[key]=col;
-
                     }
                 })
             })
             this.desk_list_pro=currentObj;
-			console.log('compareIds',currentObj);
             var commtArray=[];
 			for(var ins in currentObj){
-            	console.log('ins',res[ins],currentObj[ins]);
 				if(res[ins]&&currentObj[ins]){
                     if(currentObj[ins].studentId!=res[ins].studentId){
                         commtArray.push(currentObj[ins]);
@@ -117,13 +103,13 @@ var vm = new Vue({
         },
         complete:function (e) {//提交信息
 			this.canmove=false;
-            console.log('this.currentArea',this.currentArea);
+
             var comarray=this.compareDesk(this.desk_list_pro);
             console.log('要提交的信息',comarray);
 
         },
 		cance:function (e) {
-
+            this.canmove=false;
         },
 		isInArea:function(dot,area){
 			// 以左上角来判断是否在区域内
@@ -159,7 +145,7 @@ var vm = new Vue({
         	    this.isTouchend=false;
             var startTime=new Date().getTime();
             this.startTime=startTime;
-            console.log(startTime);
+
             setTimeout(function (en) {
             	    if(!_this.isTouchend){
                         _this.canmove=true;
@@ -244,7 +230,7 @@ var vm = new Vue({
 			}
 		},
 		columnWidth:function(){
-			var columnWidth = "1.2rem";
+			var columnWidth = "1.05rem";
 
 			return {
 				width : columnWidth
@@ -313,9 +299,9 @@ var vm = new Vue({
 					maxColumn = row.length
 				}
 			})
-			if(maxColumn > 8){
-				maxColumn = 8
-			}
+			// if(maxColumn > 8){
+			// 	maxColumn = 8
+			// }
 			return  maxColumn
 		}
 	},

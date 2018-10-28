@@ -30,7 +30,7 @@
             	:data-row="rowIndex"
             	:data-col="index"
                 :style="columnWidth"  @click="bindClick"
-                class="desk" :class="{empty:!item || !item.studentName,even:index%2 == 1,uneven:index%2 == 0}"
+                class="desk" :class="{empty:!item || !item.studentName||item.status,even:index%2 == 1,uneven:index%2 == 0}"
                 v-for="(item,index) in row" :key="index" ref="desk"
                 @dragover='allowDrop($event)' @drop="drop($event,item,rowIndex,index)"
             >
@@ -45,8 +45,8 @@
         </div>
     </div>
     <div class="bottom" v-if="canmove">
-        <button class="complete" @click="complete">完成</button>
-        <button class="cance" @click="cance">取消</button>
+        <button class="btn complete" @click="complete">完成</button>
+        <button class="btn cance" @click="cance">取消</button>
     </div>
     <div class="bottom" v-show="isrelow">
         <button class="remain" @click="gotoremain">一键提醒</button>
