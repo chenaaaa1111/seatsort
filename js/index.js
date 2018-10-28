@@ -22,6 +22,7 @@ var vm = new Vue({
 			endTime:0,
             desk_list_pro:[],
 			vmax:'A',
+            startList:[],
             isTouchend:false,
 			moveingTarget:null,
 			moveOffset:{},
@@ -110,6 +111,7 @@ var vm = new Vue({
         },
 		cance:function (e) {
             this.canmove=false;
+            this.init();
         },
 		isInArea:function(dot,area){
 			// 以左上角来判断是否在区域内
@@ -150,6 +152,7 @@ var vm = new Vue({
             	    if(!_this.isTouchend){
                         _this.canmove=true;
                         console.log('长按事件');
+                        _this.startList=_this.classInfo.desk_list;
 					}
 
             },2000)

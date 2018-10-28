@@ -21,7 +21,7 @@ html,body{
     border: none;outline: none;resize: none;line-height: 0.4rem;
 }
 .uploadBox{
-    margin: 0rem 0.24rem;position: relative;height: 1rem;border-bottom: 1px solid #aaa;
+    margin: 0rem 0.24rem;position: relative;border-bottom: 1px solid #aaa;
     line-height: 1.2rem;
 }
 .choose{
@@ -54,7 +54,29 @@ html,body{
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
 }
-
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+}
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
 
 
 
