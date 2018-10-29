@@ -13,28 +13,88 @@
     <script src="js/vue.js"></script>
 </head>
 <body>
-    <div class="top">
+    <div id="app">
+         <div class="top">
         <div class="title">学生信息</div>
-        <div class="stuInfo">
-            <div class="name">艾学习</div>
-            <div class="school"><span>上海市虹桥小学</span><span>八年级5班</span></div>
+        <div class="stuInfo" v-for=" item in bindList">
+            <div class="name">{{item.studentName}}</div>
+            <div class="school"><span>{{item.schoolName}}</span><span>{{item.gradeDesc+""+item.classDesc}}</span></div>
         </div>
-        <div class="stuInfo">
-            <div class="name">艾泥巴</div>
-            <div class="school"><span>上海市虹桥小学</span><span>八年级5班</span></div>
+            <div class="stuInfo">
+                <div class="name">艾泥巴</div>
+                <div class="school"><span>上海市虹桥小学</span><span>八年级5班</span></div>
+            </div>
+        </div>
+        <div class="btn">
+            <button class="ui-btn-lg ui-btn-primary">
+                <span>
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-tianjia"></use>
+                    </svg>
+                </span>添加绑定
+            </button>
         </div>
     </div>
-    <div class="btn">
-        <button class="ui-btn-lg ui-btn-primary">
-            <span>
-                <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-tianjia"></use>
-                </svg>
-            </span>添加绑定
-        </button>
-    </div>
-<script>
+   
+        <script>
+            var vm=new Vue({
+                el:"#app",
+                data:function(){
+                    return {
+                        "bindList":
+                                    [
+                            {
+                               
+                                "studentId": 1,
+                                "studentName": "蔡颖怡",
+                                "studentSex": "1",
+                                "studentAge": 11,
+                                "studentNumber": "11",
+                                "studentIdNumber": null,
+                                "watchId": 1,
+                                "schoolId": 1,
+                                "studentGrade": 1,
+                                "studentClass": 1,
+                                "deskNumber": "G2",
+                                "studentStatus": null,
+                                "status": null,
+                                "schoolName": "第一中学",
+                                "gradeDesc": "小学四年级",
+                                "classDesc": "一班",
+                                "busId": 1,
+                                "noticeReceiptStatus": null
+                            },
+                            {
+                                "studentId": 2,
+                                "studentName": "谢诗恩",
+                                "studentSex": "0",
+                                "studentAge": 11,
+                                "studentNumber": "23266465",
+                                "studentIdNumber": null,
+                                "watchId": 1,
+                                "schoolId": 1,
+                                "studentGrade": 2,
+                                "studentClass": 2,
+                                "deskNumber": "B1",
+                                "studentStatus": null,
+                                "status": null,
+                                "schoolName": "第一中学",
+                                "gradeDesc": "小学五年级",
+                                "classDesc": "二班",
+                                "busId": 1,
+                                "noticeReceiptStatus": null
+                            }
+                        ]
 
-</script>
+                    }
+                },
+                methods:{
+
+                },
+                mounted:function(){
+                    console.log(123);
+                }
+            })
+        </script>
 </body>
 </html>
