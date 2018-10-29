@@ -28,10 +28,10 @@
     <style>
         .demo-upload-list {
             display: inline-block;
-            width: 60px;
-            height: 60px;
+            width: .9rem;
+            height: 1rem;
             text-align: center;
-            line-height: 60px;
+            line-height: .6rem;
             border: 1px solid transparent;
             border-radius: 4px;
             overflow: hidden;
@@ -186,6 +186,7 @@
                 console.log(file, "sss", this.uploadList);
                 var imgArray = this.beforUpload;
                  if(imgArray.length>=5){
+                     this.$Message.info('一次最多上传5张');
                      return;
                  }
                     var imgpath = URL.createObjectURL(file);
