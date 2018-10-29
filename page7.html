@@ -78,17 +78,13 @@
         </div>
     </div>
     <div class="uploadBox">
-        <div class="demo-upload-list" v-for="item in uploadList">
-            <template v-if="item.status === 'finished'">
+        <div class="demo-upload-list" v-for="item in beforUpload">
+
                 <img :src="item.url">
                 <div class="demo-upload-list-cover">
                     <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
                     <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
                 </div>
-            </template>
-            <template v-else>
-                <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-            </template>
         </div>
         <Upload
                 ref="upload"
@@ -126,7 +122,7 @@
         </div>
     </div>
     <div class="send">
-        <button class="ui-btn-lg ui-btn-primary">发送通知</button>
+        <button class="ui-btn-lg ui-btn-primary" @click="submit">发送通知</button>
     </div>
 
 </div>
@@ -149,10 +145,19 @@
                 imgList:[],
                 imgName: '',
                 visible: false,
-                uploadList: []
+                uploadList: [],
+                beforUpload:[]
             }
         },
         methods: {
+            submit:function (e) {
+                console.log('提交信息');
+              //提交信息
+                // 要提交的信息
+               this.uploadList;
+               //提交成功后清楚 预览列表
+              this.beforUpload=[];
+            },
             handleView: function (name) {
                 this.imgName = name;
                 this.visible = true;
@@ -179,18 +184,18 @@
             },
             handleBeforeUpload: function (file) {
                 console.log(file, "sss", this.uploadList);
-                var imgArray = [];
-                var fileList = this.uploadList;
-                for (var url in fileList) {
+                var imgArray = this.beforUpload;
+                 if(imgArray.length>=5){
+                     return;
+                 }
                     var imgpath = URL.createObjectURL(file);
                     var imgobj = {};
                     imgobj['url'] = imgpath;
                     imgobj['name'] = file.name;
                     imgArray.push(imgobj);
-                }
                 console.log("imgArray", imgArray);
                this.imgList=imgArray;
-                this.defaultList=[];
+                this.beforUpload=imgArray;
                 const check = this.uploadList.length < 5;
                 if (!check) {
                     this.$Notice.warning({
