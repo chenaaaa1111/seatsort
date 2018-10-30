@@ -39,7 +39,7 @@
                <template v-if="item.status === 'beforeUp'">
                     <img :src="item.url">
                     <div class="demo-upload-list-cover">
-                      <!--   <Icon :id="index" class="viewicon" type="ios-eye-outline" @click.native="handleView(item.name)"></Icon> -->
+                        <Icon :id="index" class="viewicon" type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
                         <Icon class="deleteicon" :id="index" type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
                     </div>
                </template>
@@ -65,9 +65,9 @@
                 <Icon type="ios-camera" size="20"></Icon>
             </div>
         </Upload>
-        <!--<Modal title="View Image" v-model="visible">-->
-            <!--<img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">-->
-        <!--</Modal>-->
+        <Modal title="View Image" v-model="visible">
+            <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+        </Modal>
 
 
     </div>
@@ -107,7 +107,6 @@
             submit:function (e) {
                 console.log('提交信息');
               //提交信息
-                // 要提交的信息
                this.uploadList;
                //提交成功后清楚 预览列表
               this.beforUpload=[];
