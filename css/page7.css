@@ -21,7 +21,7 @@ html,body{
     border: none;outline: none;resize: none;line-height: 0.4rem;
 }
 .uploadBox{
-    margin: 0rem 0.24rem;position: relative;border-bottom: 1px solid #aaa;
+    margin: 0.4rem 0.24rem;position: relative;border-bottom: 1px solid #aaa;
     line-height: 1.2rem;
 }
 .choose{
