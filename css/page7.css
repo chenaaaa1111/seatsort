@@ -112,7 +112,15 @@ html,body{
         .ivu-icon-ios-camera{
                margin-top: -5px;
         }
-        
+        .ivu-icon-ios-eye-outline{
+                top: 17px;
+                left: 1px;
+        }
+        .ivu-icon-ios-trash-outline{
+                top: 16px;
+                right: 2px;
+        }
+
 
 
 
