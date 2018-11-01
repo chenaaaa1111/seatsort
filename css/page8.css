@@ -57,7 +57,7 @@ html,body{
 
 
 .picBox{
-    height: 2.5rem;margin: 0rem 0.48rem;padding: 0.16rem 0rem;
+   margin: 0rem 0.48rem;padding: 0.16rem 0rem;
 }
 .picBox img{
     display: block;width: 100%;height: 100%;

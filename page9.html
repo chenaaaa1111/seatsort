@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
     <title>Title</title>
     <link rel="stylesheet" href="css/frozen.css"/>
-    <link rel="stylesheet" href="css/page9.css"/>
     <script src="js/jquery-1.11.3.min.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <link rel="stylesheet" href="css/page9.css"/>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script src="font/iconfont.js"></script>
@@ -16,52 +16,115 @@
     <script src="js/vue.js"></script>
 </head>
 <body>
-    <div class="top">
-        <!--<ul class="ui-row">-->
-            <!--<li class="ui-col ui-col-50">-->
-                <!--<button class="ui-btn-lg ui-btn-primary">张好好</button>-->
-            <!--</li>-->
-            <!--<li class="ui-col ui-col-50">-->
-                <!--<button class="ui-btn-lg ui-btn-default">张悠悠</button>-->
-            <!--</li>-->
-            <!--<li class="ui-col ui-col-50">-->
-                <!--<button class="ui-btn-lg ui-btn-default">张悠悠</button>-->
-            <!--</li>-->
-        <!--</ul>-->
-        <div class="navlist">
-            <ul class="messageHeader">
-                <li class="active">张悠悠</li><li>黎明</li><li>刘德华</li><li>张学友</li><li>周润发</li>
-            </ul>
-        </div>
-        <div class="ui-form ui-border-t">
-            <form action="">
-                <div class="ui-form-item ui-form-item-link ui-border-b">
-                    <label>
-                        <span class="day">12月31日</span><span class="message">值日生通知<span class="hot">查看回执</span></span>
-                    </label>
+    <div id="app">
+          <div class="top">
+    
+                <div class="navlist">
+                    <ul class="messageHeader">
+                        <li v-for="(item,index) in parentNoticeList " @click="changeStudent" :class="chooseId==item.studentId? 'active':''" :id="item.studentId">{{item.studentName}}</li>
+                                          </ul>
                 </div>
-                <div class="ui-form-item ui-form-item-link ui-border-b">
-                    <label>
-                        <span class="day">12月31日</span><span class="message">值日生通知</span>
-                    </label>
+                <div class="ui-form ui-border-t">
+                    <form action="">
+                        <div v-for="(item ,index) in studentList.noticeList" class="ui-form-item ui-form-item-link ui-border-b">
+                            <label>
+                                <span class="day">{{item.createTime}}</span><span class="message">{{item.noticeTitle}}
+                                    <span class="hot" v-if="item.noticeReceiptStatus=='N'">需要回执</span></span>
+                            </label>
+                        </div>
+                       
+                    </form>
                 </div>
-                <div class="ui-form-item ui-form-item-link ui-border-b">
-                    <label>
-                        <span class="day">12月31日</span><span class="message">值日生通知<span class="hot">查看回执</span></span>
-                    </label>
-                </div>
-                <div class="ui-form-item ui-form-item-link ui-border-b">
-                    <label>
-                        <span class="day">12月31日</span><span class="message">值日生通知</span>
-                    </label>
-                </div>
-            </form>
-        </div>
-    </div>
+            </div>
 
-    <div class="send">
-        <button class="ui-btn-lg ui-btn-primary">发布通知</button>
+            <div class="send">
+                <button class="ui-btn-lg ui-btn-primary">发布通知</button>
+            </div>
+
     </div>
+   <script type="text/javascript">
+       var vm=new Vue({
+            el:"#app",
+            data:function(){
+                return {
+                    studentId:'',
+                    chooseId:'1',
+                    "parentNoticeList": [
+                            {
+                                "studentId": 1,
+                                "studentName": "张好好",
+                                "noticeList": [
+                                  {
+                                      "noticeId": 1,
+                                      "noticeTitle": "测试",
+                                      "createTime": "09-30",
+                                      "noticeReceiptStatus":"N" 
+                                  },
+                                  {
+                                      "noticeId": 2,
+                                      "noticeTitle": "测试2",
+                                      "createTime": "10-08",
+                                      "noticeReceiptStatus":"Y" 
+                                  }
+                                ]
+                            },
+                            {
+
+                                "studentId": 2,
+                                "studentName": "张优优",
+                                "noticeList": [
+                                  {
+                                      "noticeId": 1,
+                                      "noticeTitle": "测试张悠悠",
+                                      "createTime": "09-30",
+                                      "noticeReceiptStatus":"Y" 
+                                  },
+                                  {
+                                      "noticeId": 2,
+                                      "noticeTitle": "测试张悠悠",
+                                      "createTime": "10-08",
+                                      "noticeReceiptStatus":"N" 
+                                  }
+                                ]
+
+                            }
+                          ],
+                          studentList: {
+                                "studentId": 1,
+                                "studentName": "张好好",
+                                "noticeList": [
+                                  {
+                                      "noticeId": 1,
+                                      "noticeTitle": "测试",
+                                      "createTime": "09-30"
+
+                                  },
+                                  {
+                                      "noticeId": 2,
+                                      "noticeTitle": "测试2",
+                                      "createTime": "10-08"
+                                  }
+                                ]
+                            }
+                }
+            },
+            methods:{
+                changeStudent:function(event){
+                    console.log(event.currentTarget.id);
+                    var chooseId=event.currentTarget.id;
+                    this.chooseId=chooseId;
+                   var parentNoticeList=this.parentNoticeList;
+                   parentNoticeList.forEach((val,key)=>{
+                        console.log(val,key);
+                        if(val.studentId==chooseId){
+                            this.studentList=val;
+                        }
+                   })                }
+            }
+
+       })
+
+   </script>
     <script>
         $(function () {
             $(function () {

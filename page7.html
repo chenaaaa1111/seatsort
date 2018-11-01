@@ -28,74 +28,76 @@
 </head>
 <body>
 <div id="app" @click="hiderem">
-    
-    <div class="head">10月15日</div>
-    <div class="edit">
-        <div class="editInner">
-            <textarea></textarea>
-        </div>
-    </div>
-    <div class="uploadBox">
-        <div class="demo-upload-list" v-for="item in beforUpload">
-        <template v-if="item.status === 'beforeUp'">
-            <img :src="item.url" @click="handleView(item)" @touchStart="touchstart(item)" @touchEnd="touchend(item)">
-          
-        </template>
-        <template v-else>
-            <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-        </template>
-    </div>
-        <Upload
-                ref="upload"
-                :show-upload-list="false"
-                :default-file-list="defaultList"
-                :on-success="handleSuccess"
-                :format="['jpg','jpeg','png']"
-                :max-size="2048"
-                :on-format-error="handleFormatError"
-                :on-exceeded-size="handleMaxSize"
-                :before-upload="handleBeforeUpload"
-                multiple
-                type="drag"
-                action="//jsonplaceholder.typicode.com/posts/"
-                style="display: inline-block;width:58px;">
-            <div style="width: 58px;height:58px;line-height: 58px;">
-                <Icon type="ios-camera" size="20"></Icon>
-            </div>
-        </Upload>
-        <Modal title="View Image" v-model="visible"  title="提示"
-                @on-ok="cancel"
-                cancel-text="删除"
-                @on-cancel=" remove">
-            <img :src="showurl" v-if="visible" style="width: 100%">
-        </Modal>
-       
+         <form action=""  enctype="multipart/form-data" >
+           <div class="head">10月15日</div>
+                <div class="edit">
+                    <div class="editInner">
+                        <textarea></textarea>
+                    </div>
+                </div>
+                <div class="uploadBox">
+                    <div class="demo-upload-list" v-for="item in beforUpload">
+                    <template v-if="item.status === 'beforeUp'">
+                        <img :src="item.url" @click="handleView(item)" @touchStart="touchstart(item)" @touchEnd="touchend(item)">
+                      
+                    </template>
+                    <template v-else>
+                        <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+                    </template>
+                </div>
+                                 <Upload
+                                            ref="upload"
+                                            :show-upload-list="false"
+                                            :default-file-list="defaultList"
+                                            :on-success="handleSuccess"
+                                            :format="['jpg','jpeg','png']"
+                                            :max-size="2048"
+                                            :on-format-error="handleFormatError"
+                                            :on-exceeded-size="handleMaxSize"
+                                            :before-upload="handleBeforeUpload"
+                                            multiple
+                                            type="drag"
+                                            action=""
+                                            style="display: inline-block;width:58px;">
+                                        <div style="width: 58px;height:58px;line-height: 58px;">
+                                            <Icon type="ios-camera" size="20"></Icon>
+                                        </div>
+                                    </Upload>
+                                    <Modal title="View Image" v-model="visible"  title="提示"
+                                            @on-ok="cancel"
+                                            cancel-text="删除"
+                                            @on-cancel=" remove">
+                                        <img :src="showurl" v-if="visible" style="width: 100%">
+                                    </Modal>
+                                   
 
-    </div>
-    <div class="kg">
-        <div class="kgTip">需发送收到回执</div>
-        <div class="onOff">
-            <div class="switch">
-                <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="send">
-        <button class="ui-btn-lg ui-btn-primary" @click="submit">发送通知</button>
-    </div>
-    <template>
-            <Modal
-                v-model="modal1"
-                title="提示"
-                @on-ok="cancel"
-                cancel-text="删除"
-                @on-cancel=" remove" >
-                <p>是否删除当前图片</p>
-            </Modal>
-    </template>
+                                </div>
+                                <div class="kg">
+                                    <div class="kgTip">需发送收到回执</div>
+                                    <div class="onOff">
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span class="lever"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="send">
+                                    <input value="发送通知" class="ui-btn-lg ui-btn-primary" type="submit" @click="submit"></input>
+                                </div>
+                    <template>
+                            <Modal
+                                v-model="modal1"
+                                title="提示"
+                                @on-ok="cancel"
+                                cancel-text="删除"
+                                @on-cancel=" remove" >
+                                <p>是否删除当前图片</p>
+                            </Modal>
+                    </template>
+         </form>       
+          
 </div>
 
 <script>
@@ -174,7 +176,7 @@
                 });
             },
             handleBeforeUpload: function (file) {
-                console.log(file, "sss", this.uploadList);
+                console.log(file, "sss", file);
                 var imgArray = this.beforUpload;
                  if(imgArray.length>=5){
                      this.$Message.info('一次最多上传5张');
@@ -197,6 +199,17 @@
                         title: 'Up to five pictures can be uploaded.'
                     });
                 }
+                $.ajax({
+                    url:'',
+                    data:{
+                      
+                        
+                        file:file
+                    },
+                    success:function(res){
+                        console.loe(res)
+                    }
+                })
                 return false;
             }
         },

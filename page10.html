@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/frozen.css"/>
+    <link rel="stylesheet" href="css/page8.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="font/iconfont.js"></script>
+    <script src="js/rem.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="head">{{detailes.noticeMessage.creatTime}}</div>
+            <div class="edit">
+                <div class="editInner">
+                    <textarea readonly></textarea>
+                </div>
+            </div>
+            <div class="picBox">
+                <img v-for="item in detailes.noticeMessageList" :src="item.noticerImagePath||images/meizi.png" />
+            </div>
+            <div class="kg">
+                <div class="kgTip">需发送收到回执</div>
+                <div class="onOff">
+                    <div class="switch">
+                        <label>
+
+                            <input type="checkbox">
+                            <span class="lever"></span>
+
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="send">
+                <button class="ui-btn-lg ui-btn-primary">我已知道</button>
+            </div>
+
+    </div>        
+    <script type="text/javascript">
+        var vm=new Vue({
+            el:"#app",
+            data:function(){
+                return {
+                    detailes:{
+                          "noticeMessage": {
+                            "noticeId": 1,
+                            "noticeNumber": "M20181015154000001",
+                            "schoolId": 1,
+                            "noticeType": "test",
+                            "teacherId": 1,
+                            "noticeTitle": "测试",
+                            "noticeContent": "测试",
+                            "status": "1",
+                            "receipt": "1",
+                            "creatTime":"2018-10-14 15:41:33"
+                          },
+                          "noticeMessageList": [
+                            {
+                              "noticerImagePath": "images/notice/2018102210055917.jpg"
+                            },
+                            {
+                              "noticerImagePath": "images/notice/2018102210055917.jpg"
+                            },
+                            {
+                              "noticerImagePath": "images/notice/2018102210055917.jpg"
+                            }
+                          ]
+                        }
+                }
+            },
+            methods:{
+
+            }
+        })
+
+    </script>
+
+</body>
+</html>

@@ -30,6 +30,11 @@ var vm = new Vue({
 		}
 	},
 	methods : {
+		getQueryString:function (name) { 
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+				var r = window.location.search.substr(1).match(reg); 
+				if (r != null) return unescape(r[2]); return null; 
+				}, 
 		init:function(){
 			var _this = this;
 			this.$http.get('./json/mock2.json',{params:{class_id:class_id}}).then(function(res){
@@ -312,7 +317,11 @@ var vm = new Vue({
 		this.init()
 	},
 	mounted : function(){
-		
+		var isback=this.getQueryString('isback');
+		console.log('GetQueryString',isback);
+		if(isback){
+			this.isrelow=true;
+		}
 	}
 })
 
