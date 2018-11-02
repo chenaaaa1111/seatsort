@@ -116,6 +116,7 @@
                 uploadList: [],
                 beforUpload:[],
                 ishow:false,
+                forda:new FormData(),
                 islongTouch:false,
                 showRemove:false,
                 removeItem:''
@@ -129,7 +130,8 @@
                 this.ishow=!this.ishow;
             },
             submit:function (e) {
-                console.log('提交信息');
+                console.log('提交信息',this.forda);
+
               //提交信息
                this.uploadList;
                //提交成功后清楚 预览列表
@@ -158,6 +160,7 @@
             handleRemove: function (file) {
                 const fileList = this.beforUpload;
                 this.beforUpload.splice(fileList.indexOf(file), 1);
+                this.forda.delete(file.name);
             },
             handleSuccess: function (res, file) {
                 file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
@@ -176,6 +179,10 @@
                 });
             },
             handleBeforeUpload: function (file) {
+                console.log('befor',file.name);
+                //用formData 上传图片 对然输出不了但是后台可以接收到，为啥我也不知道
+                this.forda.append(file.name,file);
+                console.log( 'formData',this.forda)
                 console.log(file, "sss", file);
                 var imgArray = this.beforUpload;
                  if(imgArray.length>=5){
@@ -199,17 +206,7 @@
                         title: 'Up to five pictures can be uploaded.'
                     });
                 }
-                $.ajax({
-                    url:'',
-                    data:{
-                      
-                        
-                        file:file
-                    },
-                    success:function(res){
-                        console.loe(res)
-                    }
-                })
+              
                 return false;
             }
         },
