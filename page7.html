@@ -136,11 +136,45 @@
                this.uploadList;
                //提交成功后清楚 预览列表
               this.beforUpload=[];
+                // var formd=new FormData();
+                // formd.append(this.file);
+                console.log(this.forda);
+                // this.forda.append('file',file)
+                this.forda.append('status',"1");
+                var noticeContent=$("#noticeContent").val();
+                this.forda.append('noticeContent',noticeContent);
+                $.ajax({
+                        url:"/biz/WeChat/teacher/sentNotice",
+                        type:"post",
+                        dataType:"json",
+                        contentType:false,
+                        processData:false,
+                        mimeType:"multipart/form-data",
+                        data:this.forda,
+                        success:function (res) {
+                            console.log(res);
+                        }
+                    })
+                this.forda=new FormData();
+
             },
             touchstart:function(item){
               
             },
             remove:function(){
+                //删除这里不能用delete(name) 因为这样会把所有图片删除，只能取出来删除之后再便利添加进去
+                
+                
+                const fileList = this.beforUpload;
+                this.beforUpload.splice(fileList.indexOf(this.removeItem), 1);
+                var files=this.forda.getAll('file');
+                files.splice(files.indexOf(file), 1);
+                this.forda.delete('file');
+                for(var fil in files){
+                    this.forda.append('file',files[fil]);
+                }
+                //this.forda.append('file',files);
+                //删除就是全部删了 好像  这个key就是等于file  key就是file  一直append 就1  12   123 然后删除就全部删了
                 const fileList = this.beforUpload;
                 this.beforUpload.splice(fileList.indexOf(this.removeItem), 1);
             },
