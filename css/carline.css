@@ -28,3 +28,8 @@
 .collection{
     margin: 0;
 }
+.icon-xiangshangshouqi{
+        position: absolute;
+        right: 20px;
+        color: #ccc;
+}
