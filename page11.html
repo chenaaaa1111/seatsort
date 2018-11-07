@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
+
+    <title>Title</title>
+    <link rel="stylesheet" href="css/frozen.css"/>
+    <link rel="stylesheet" href="css/page1.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/rem.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- import stylesheet -->
+
+    <!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<style type="text/css">
+    .el-select{
+        width: 5rem;
+        height: .8rem;  
+
+    }
+    .el-input__inner{
+        height: .8rem;
+    }
+     .line .name{
+            line-height: .8rem;
+        }
+</style>
+</head>
+<body>
+    <div id="app">
+        <div class="iconBox">
+        <div class="circle">
+            <div class="tips">获取微信用户头像</div>
+            <img src="images/meizi.png" alt=""/>
+        </div>
+        <div class="circle">
+            <img class="link" src="images/link.png" alt=""/>
+        </div>
+        <div class="circle">
+            <p>我的学校</p>
+        </div>
+    </div>
+    <div class="loginBox">
+        <div class="line">
+            <div class="name">姓名</div>
+            <div class="edit"><input type="text"/></div>
+            
+        </div>
+        <div class="line">
+            <div class="name">关系</div>
+          <!--   <template>
+            <Select v-model="model1" style="width:200px">
+                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+        </template> -->
+              <el-select v-model="value" placeholder="请选择">
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
+
+        </div>
+        <div class="line">
+            <button class="ui-btn-lg ui-btn-primary">
+                确定
+            </button>
+        </div>
+    </div>
+
+    </div>
+    
+    <script>
+        var vm =new Vue({
+            el:"#app",
+            data:function(){
+                return {
+                options: [{
+                      value: '选项1',
+                      label: '父子'
+                    }, {
+                      value: '选项2',
+                      label: '母子'
+                    }, {
+                      value: '选项3',
+                      label: '父女'
+                    }, {
+                      value: '选项4',
+                      label: '母女'
+                    }, {
+                      value: '选项5',
+                      label: '北京烤鸭'
+                    }],
+                    value: ''
+                }
+                    
+
+            },
+            methods:{
+
+            }
+
+        })
+    </script>
+</body>
+</html>
